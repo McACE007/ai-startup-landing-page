@@ -40,7 +40,7 @@ const Testimonials = () => {
       <div className="container">
         <h2 className="section-title">Beyond Expectations.</h2>
         <p className="section-description mt-5 max-w-md mx-auto">
-          Our revolutionary AI SEO tools have transformed our clients'
+          Our revolutionary AI SEO tools have transformed our clients&apos;
           strategies.
         </p>
         <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)] mt-10">
@@ -83,7 +83,7 @@ const Testimonials = () => {
                     </div>
                   </div>
                 </div>
-              )
+              ),
             )}
           </motion.div>
         </div>

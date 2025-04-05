@@ -101,7 +101,7 @@ function Hero() {
           AI SEO
         </h1>
         <p className="text-lg tracking-tight text-white/70 text-center mt-5 md:text-xl md:max-w-xl md:mx-auto">
-          Elevate your site's visibility effortlessly with AI, where smart
+          Elevate your site&apos;s visibility effortlessly with AI, where smart
           technology meets user-friendly SEO tools.
         </p>
         <div className="mt-5 flex justify-center">

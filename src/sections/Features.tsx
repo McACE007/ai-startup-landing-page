@@ -90,7 +90,7 @@ function FeatureTab({ tab, onClick, isSelected }: FeatureTabPropsType) {
       repeatType: "loop",
       times,
     });
-  }, [isSelected]);
+  }, [isSelected, xPercentage, yPercentage]);
 
   return (
     <div
@@ -144,19 +144,19 @@ const Features = () => {
     animate(
       backgroundSizeX,
       [backgroundSizeX.get(), 100, tabs[index].backgroundSizeX],
-      animateOptions
+      animateOptions,
     );
 
     animate(
       backgroundPositionX,
       [backgroundPositionX.get(), 100, tabs[index].backgroundPositionX],
-      animateOptions
+      animateOptions,
     );
 
     animate(
       backgroundPositionY,
       [backgroundPositionY.get(), 100, tabs[index].backgroundPositionY],
-      animateOptions
+      animateOptions,
     );
   }
 

@@ -1,7 +1,6 @@
 "use client";
 import Button from "@/components/Button";
 import starsBg from "@/assets/stars.png";
-import Image from "next/image";
 import gridLines from "@/assets/grid-lines.png";
 import {
   useTransform,
@@ -10,18 +9,21 @@ import {
   useMotionTemplate,
   useMotionValue,
 } from "framer-motion";
-import { RefObject, useEffect, useRef } from "react";
+import { RefObject, useCallback, useEffect, useRef } from "react";
 
 function useRelativeMousePosition(to: RefObject<HTMLElement>) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  function updateMousePosition(event: MouseEvent) {
-    if (!to.current) return;
-    const { top, left } = to.current.getBoundingClientRect();
-    mouseX.set(event.x - left);
-    mouseY.set(event.y - top);
-  }
+  const updateMousePosition = useCallback(
+    (event: MouseEvent) => {
+      if (!to.current) return;
+      const { top, left } = to.current.getBoundingClientRect();
+      mouseX.set(event.x - left);
+      mouseY.set(event.y - top);
+    },
+    [mouseX, mouseY, to],
+  );
 
   useEffect(() => {
     window.addEventListener("mousemove", updateMousePosition);
@@ -29,7 +31,7 @@ function useRelativeMousePosition(to: RefObject<HTMLElement>) {
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
     };
-  }, []);
+  }, [updateMousePosition]);
 
   return { mouseX, mouseY };
 }
@@ -45,7 +47,7 @@ const CallToAction = () => {
   const backgroundPositionY = useTransform(
     scrollYProgress,
     [0, 1],
-    [300, -300]
+    [300, -300],
   );
 
   const { mouseX, mouseY } = useRelativeMousePosition(borderedDivRef);
